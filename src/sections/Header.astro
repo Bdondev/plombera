@@ -1,0 +1,116 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+
+const links = [
+	{ label: 'Home', href: '/', chevron: true },
+	{ label: 'About', href: '/#about' },
+	{ label: 'Services', href: '/#services', chevron: true },
+	{ label: 'Shop', href: '/shop', chevron: true },
+	{ label: 'Blog', href: '/#blog', chevron: true },
+	{ label: 'Contact', href: '/#contact' },
+];
+---
+
+<header class="site-header">
+	<div class="header-shell">
+		<a class="brand" href="/" aria-label="Plombera home">
+			<Image src={logo} alt="Plombera" width={207} height={69} loading="eager" />
+		</a>
+
+		<nav class="desktop-nav" aria-label="Main navigation">
+			<ul>
+				{links.map((link) => (
+					<li>
+						<a href={link.href} aria-current={link.href === '/' ? 'page' : undefined}>
+							{link.label}
+							{link.chevron && <span class="chevron" aria-hidden="true"></span>}
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+
+		<a class="phone" href="tel:+12343454574" aria-label="Call Plombera at (234) 345-4574">
+			<span class="phone-icon" aria-hidden="true">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M7.4 3.4 10 6.1 8.4 8.7a16 16 0 0 0 6.9 6.9l2.6-1.6 2.7 2.6-1.5 3.3c-.3.7-1.1 1-1.8.9C9.6 19.7 4.3 14.4 3.2 6.7c-.1-.7.2-1.5.9-1.8l3.3-1.5Z" />
+				</svg>
+			</span>
+			<span class="phone-copy"><span>Call Or Chat</span><strong>(234) 345-4574</strong></span>
+		</a>
+
+		<details class="mobile-menu">
+			<summary aria-label="Navigation menu">
+				<span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+			</summary>
+			<nav aria-label="Mobile navigation">
+				<ul>
+					{links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+					<li><a href="tel:+12343454574">Call (234) 345-4574</a></li>
+				</ul>
+			</nav>
+		</details>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		position: absolute;
+		z-index: 20;
+		top: clamp(18px, 2.4vw, 35px);
+		left: 0;
+		width: 100%;
+		padding-inline: var(--spacing-container);
+	}
+	.header-shell {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 18px;
+		width: min(100%, 1170px);
+		min-height: 84px;
+		margin-inline: auto;
+		padding: 8px 17px 8px 22px;
+		border-radius: 999px;
+		background: rgb(255 255 255 / 94%);
+		box-shadow: 0 8px 32px rgb(16 43 99 / 8%);
+	}
+	.brand { display: flex; flex: none; align-items: center; }
+	.brand img { display: block; width: clamp(156px, 14.4vw, 207px); height: auto; }
+	.desktop-nav { transform: translateX(-55px); }
+	.desktop-nav ul, .mobile-menu ul { display: flex; align-items: center; gap: clamp(14px, 1.55vw, 24px); margin: 0; padding: 0; list-style: none; }
+	.desktop-nav a { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; color: var(--color-plombera-navy-950); font-size: 15px; font-weight: 500; text-decoration: none; white-space: nowrap; }
+	.desktop-nav a:hover, .mobile-menu a:hover { color: var(--color-plombera-blue-600); }
+	.chevron { display: inline-block; width: 7px; height: 7px; transform: translateY(-2px) rotate(45deg); border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; }
+	.phone { display: inline-flex; flex: none; align-items: center; gap: 11px; color: var(--color-plombera-navy-950); text-decoration: none; }
+	.phone-icon { display: grid; width: 54px; height: 54px; place-items: center; border-radius: 50%; background: var(--color-plombera-yellow-400); }
+	.phone-icon svg { width: 25px; height: 25px; }
+	.phone-copy { display: grid; gap: 3px; white-space: nowrap; }
+	.phone-copy span { color: var(--color-plombera-muted); font-size: 13px; }
+	.phone-copy strong { font-size: 15px; font-weight: 800; }
+	.mobile-menu { display: none; }
+	a:focus-visible, summary:focus-visible { outline: 3px solid var(--color-plombera-blue-600); outline-offset: 4px; }
+	@media (max-width: 1050px) {
+		.header-shell { min-height: 70px; }
+		.desktop-nav { display: none; }
+		.mobile-menu { display: block; position: relative; margin-left: auto; }
+		.mobile-menu summary { display: grid; width: 44px; height: 44px; place-items: center; border-radius: 50%; color: var(--color-plombera-navy-950); cursor: pointer; list-style: none; }
+		.mobile-menu summary::-webkit-details-marker { display: none; }
+		.menu-bars { display: grid; gap: 5px; }
+		.menu-bars span { display: block; width: 22px; height: 2px; border-radius: 2px; background: currentColor; }
+		.mobile-menu nav { position: absolute; top: calc(100% + 17px); right: -14px; width: min(300px, calc(100vw - 40px)); padding: 12px; border-radius: 18px; background: white; box-shadow: var(--shadow-float); }
+		.mobile-menu ul { display: grid; gap: 0; }
+		.mobile-menu a { display: block; padding: 11px 12px; border-radius: 8px; color: var(--color-plombera-navy-950); font-weight: 600; text-decoration: none; }
+	}
+	@media (max-width: 600px) {
+		.site-header { top: 16px; padding-inline: 16px; }
+		.header-shell { min-height: 62px; padding: 7px 10px 7px 16px; }
+		.brand img { width: 143px; }
+		.phone { margin-left: auto; }
+		.phone-icon { width: 42px; height: 42px; }
+		.phone-icon svg { width: 22px; height: 22px; }
+		.phone-copy { display: none; }
+		.mobile-menu { margin-left: 0; }
+	}
+</style>
