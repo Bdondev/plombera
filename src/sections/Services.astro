@@ -1,0 +1,170 @@
+---
+const services = [
+	{
+		title: 'Pipe Installation & Replacement',
+		description: 'From burst pipes aging plumbing system, our experts provide durable replacement and secure installations for long-term.',
+		tags: ['#PlumbingServices', '#HouseRepair', '#PipeReplacement', '#DrainCleaning'],
+	},
+	{
+		title: 'Toilet Repair & Installation',
+		description: 'We fix running, leaking, or clogged toilets, and provide professional installation for new upgrades improving comfort.',
+		tags: ['#PlumbingServices', '#HomePlumbing', '#WaterHeaterRepair', '#FixItFast'],
+	},
+	{
+		title: 'Emergency Plumbing',
+		description: 'Plumbing emergencies can strike at any time. Our 24/7 team is ready to respond quickly and restore your peace of mind.',
+		tags: ['#PlumbingServices', '#24HourPlumber', '#PlumbingTips', '#TrustedPlumber'],
+	},
+];
+---
+
+<section id="services" class="services-section" aria-labelledby="services-title">
+	<div class="services-container">
+		<h2 id="services-title" class="sr-only">Our services</h2>
+
+		<div class="services-list">
+			{services.map((service) => (
+				<article class="service-card">
+					<div class="service-main">
+						<h3>{service.title}</h3>
+						<a class="service-link" href="/#contact" aria-label={`Learn more about ${service.title}`}>
+							Learn More
+						</a>
+					</div>
+
+					<div class="service-details">
+						<p>{service.description}</p>
+						<ul aria-label={`${service.title} keywords`}>
+							{service.tags.map((tag) => <li>{tag}</li>)}
+						</ul>
+					</div>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.services-section {
+		background: var(--color-plombera-surface);
+		color: var(--color-plombera-navy-950);
+	}
+
+	.services-container {
+		width: min(calc(100% - 2.5rem), 1170px);
+		margin-inline: auto;
+		padding-block: clamp(76px, 8vw, 128px);
+	}
+
+	.services-list {
+		display: grid;
+		gap: 20px;
+	}
+
+	.service-card {
+		display: grid;
+		grid-template-columns: minmax(210px, 0.72fr) minmax(0, 1fr);
+		min-height: 264px;
+		align-items: stretch;
+		gap: clamp(34px, 5vw, 70px);
+		padding: 28px 31px;
+		border: 1px solid var(--color-plombera-line);
+		border-radius: var(--radius-card);
+		background: rgb(255 255 255 / 12%);
+	}
+
+	.service-main {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	.service-card h3 {
+		max-width: 360px;
+		margin: 1px 0 0;
+		font-size: clamp(21px, 1.65vw, 27px);
+		line-height: 1.05;
+		letter-spacing: -0.02em;
+	}
+
+	.service-link {
+		display: inline-flex;
+		min-height: 47px;
+		align-items: center;
+		justify-content: center;
+		padding-inline: 20px;
+		border-radius: var(--radius-pill);
+		background: var(--color-plombera-blue-600);
+		color: white;
+		font-size: 14px;
+		font-weight: 800;
+		text-decoration: none;
+	}
+
+	.service-link:hover { background: var(--color-plombera-blue-500); }
+	.service-link:focus-visible { outline: 3px solid var(--color-plombera-navy-950); outline-offset: 4px; }
+
+	.service-details {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-width: 0;
+	}
+
+	.service-details p {
+		max-width: 370px;
+		margin: 0;
+		color: var(--color-plombera-muted);
+		font-size: 15px;
+		line-height: 1.38;
+	}
+
+	.service-details ul {
+		display: grid;
+		grid-template-columns: repeat(2, max-content);
+		max-width: 480px;
+		gap: 11px 10px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.service-details li {
+		padding: 7px 11px 6px;
+		border: 1px solid var(--color-plombera-navy-950);
+		border-radius: var(--radius-pill);
+		color: var(--color-plombera-navy-950);
+		font-size: 13px;
+		line-height: 1;
+		white-space: nowrap;
+	}
+
+	@media (max-width: 800px) {
+		.services-container { padding-block: 64px 72px; }
+		.service-card {
+			grid-template-columns: 1fr;
+			min-height: 0;
+			gap: 28px;
+			padding: 24px;
+		}
+		.service-main { gap: 28px; }
+		.service-card h3 { max-width: none; }
+		.service-details { gap: 28px; }
+		.service-details p { max-width: none; }
+		.service-details ul {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			max-width: none;
+		}
+		.service-details li { text-align: center; white-space: normal; }
+	}
+
+	@media (max-width: 480px) {
+		.services-container { width: min(calc(100% - 2rem), 1170px); }
+		.service-card { padding: 20px; }
+		.service-card h3 { font-size: 22px; }
+		.service-link { min-height: 43px; padding-inline: 17px; font-size: 13px; }
+		.service-details li { padding: 6px 9px 5px; font-size: 11px; }
+	}
+</style>
