@@ -1,0 +1,250 @@
+---
+import { Image } from 'astro:assets';
+import blogOne from '../assets/blog-1.png';
+import blogTwo from '../assets/blog-2.png';
+
+const articles = [
+	{
+		image: blogOne,
+		imageAlt: 'Plumber repairing a bathroom sink drain with a wrench',
+		categories: [
+			{ label: '#PlumbingServices', highlighted: true },
+			{ label: '#HomePlumbing', highlighted: false },
+		],
+		date: 'October 1, 2025',
+		datetime: '2025-10-01',
+		author: 'John Dukes',
+		title: 'Plumbing Upgrades For A Modern Bathroom',
+		linkClass: 'highlighted',
+	},
+	{
+		image: blogTwo,
+		imageAlt: 'Plumber protecting household pipes beneath a bathroom sink',
+		categories: [
+			{ label: '#PlumbingServices', highlighted: false },
+			{ label: '#HomePlumbing', highlighted: false },
+		],
+		date: 'October 11, 2025',
+		datetime: '2025-10-11',
+		author: 'Frances Swann',
+		title: 'How To Protect Your Pipes During Winter',
+		linkClass: '',
+	},
+];
+---
+
+<section id="blog" class="blog-section" aria-labelledby="blog-title">
+	<div class="blog-container">
+		<header class="blog-header">
+			<p class="eyebrow">Our Latest Blog</p>
+			<h2 id="blog-title">Plumbing Tips &amp; Tricks For<br class="desktop-break" /> A Worry-Free Home</h2>
+		</header>
+
+		<div class="blog-grid">
+			{articles.map((article) => (
+				<article class="blog-card">
+					<div class="blog-visual">
+						<Image class="blog-image" src={article.image} alt={article.imageAlt} width={1382} height={1138} loading="lazy" />
+						<div class="category-list" aria-label="Article categories">
+							{article.categories.map((category) => (
+								<span class:list={['category-badge', { highlighted: category.highlighted }]}>{category.label}</span>
+							))}
+						</div>
+
+						<div class="blog-panel">
+							<div class="blog-meta">
+								<time datetime={article.datetime}>
+									<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+										<rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+										<path d="M7.5 3.5v3M16.5 3.5v3M3.5 9.5h17" />
+									</svg>
+									{article.date}
+								</time>
+								<span class="author">
+									<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+										<circle cx="12" cy="8" r="3.5" />
+										<path d="M5.5 20c.8-3.2 3-5 6.5-5s5.7 1.8 6.5 5" />
+									</svg>
+									{article.author}
+								</span>
+							</div>
+							<h3>{article.title}</h3>
+							<a class:list={['blog-link', article.linkClass]} href="/#blog" aria-label={`Learn more about ${article.title}`}>
+								Learn More <span aria-hidden="true">↗</span>
+							</a>
+						</div>
+					</div>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.blog-section {
+		background: white;
+		color: var(--color-plombera-navy-950);
+	}
+
+	.blog-container {
+		width: min(calc(100% - 2.5rem), 1170px);
+		margin-inline: auto;
+		padding-block: clamp(72px, 8vw, 112px) clamp(82px, 9vw, 126px);
+	}
+
+	.blog-header {
+		margin: 0 auto clamp(47px, 5vw, 65px);
+		text-align: center;
+	}
+
+	.eyebrow {
+		display: inline-flex;
+		width: fit-content;
+		margin: 0 0 21px;
+		padding: 6px 12px 5px;
+		border: 1px solid var(--color-plombera-navy-950);
+		border-radius: var(--radius-pill);
+		font-family: var(--font-display);
+		font-size: 13px;
+		font-weight: 700;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	.blog-header h2 {
+		margin: 0;
+		font-size: clamp(36px, 3.6vw, 52px);
+		line-height: 0.98;
+		letter-spacing: -0.04em;
+	}
+
+	.blog-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 22px;
+	}
+
+	.blog-card {
+		min-width: 0;
+	}
+
+	.blog-visual {
+		position: relative;
+		aspect-ratio: 1.08;
+		overflow: hidden;
+		border-radius: 13px;
+		background: var(--color-plombera-surface);
+	}
+
+	.blog-image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.category-list {
+		position: absolute;
+		top: 18px;
+		right: 17px;
+		display: flex;
+		max-width: calc(100% - 34px);
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		gap: 7px;
+	}
+
+	.category-badge {
+		padding: 7px 12px 6px;
+		border: 1px solid rgb(16 43 99 / 8%);
+		border-radius: var(--radius-pill);
+		background: white;
+		color: var(--color-plombera-navy-950);
+		font-size: 13px;
+		font-weight: 500;
+		line-height: 1;
+		white-space: nowrap;
+	}
+
+	.category-badge.highlighted {
+		border-color: var(--color-plombera-yellow-400);
+		background: var(--color-plombera-yellow-400);
+	}
+
+	.blog-panel {
+		position: absolute;
+		right: 19px;
+		bottom: 18px;
+		left: 19px;
+		min-height: 117px;
+		padding: 17px 18px 15px;
+		border-radius: 13px;
+		background: white;
+		box-shadow: 0 7px 18px rgb(16 43 99 / 10%);
+	}
+
+	.blog-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px 14px;
+		align-items: center;
+		color: var(--color-plombera-muted);
+		font-size: 13px;
+		line-height: 1;
+	}
+
+	.blog-meta time,
+	.author {
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+		white-space: nowrap;
+	}
+
+	.blog-meta svg { width: 17px; height: 17px; color: var(--color-plombera-navy-950); }
+
+	.blog-panel h3 {
+		margin: 14px 0 0;
+		font-size: clamp(16px, 1.35vw, 20px);
+		line-height: 1.05;
+		letter-spacing: -0.025em;
+	}
+
+	.blog-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		margin-top: 14px;
+		color: var(--color-plombera-navy-950);
+		font-size: 14px;
+		font-weight: 800;
+		text-decoration: none;
+	}
+
+	.blog-link.highlighted { color: #d0a900; }
+	.blog-link:hover { color: var(--color-plombera-blue-600); }
+	.blog-link.highlighted:hover { color: var(--color-plombera-navy-950); }
+	.blog-link:focus-visible { outline: 3px solid var(--color-plombera-blue-600); outline-offset: 4px; }
+
+	@media (max-width: 800px) {
+		.blog-container { padding-block: 70px 84px; }
+		.blog-header { margin-bottom: 38px; }
+		.blog-header h2 { font-size: clamp(34px, 5vw, 46px); }
+		.blog-grid { gap: 18px; }
+	}
+
+	@media (max-width: 600px) {
+		.blog-container { width: min(calc(100% - 2rem), 1170px); padding-block: 62px 74px; }
+		.blog-header { margin-bottom: 32px; }
+		.blog-header h2 { font-size: 35px; }
+		.desktop-break { display: none; }
+		.blog-grid { grid-template-columns: 1fr; gap: 24px; }
+		.blog-visual { aspect-ratio: 1.08; }
+		.category-list { top: 13px; right: 13px; max-width: calc(100% - 26px); gap: 5px; }
+		.category-badge { padding: 6px 9px 5px; font-size: 11px; }
+		.blog-panel { right: 13px; bottom: 13px; left: 13px; padding: 15px 15px 14px; }
+		.blog-meta { font-size: 12px; }
+		.blog-panel h3 { margin-top: 11px; font-size: 17px; }
+		.blog-link { margin-top: 11px; font-size: 13px; }
+	}
+</style>
