@@ -1,13 +1,14 @@
 ---
 import { Image } from 'astro:assets';
+import GHLLeadForm from '../components/GHLLeadForm.astro';
 import portfolioImage from '../assets/portfolio.png';
 ---
 
-<section id="portfolio" class="portfolio-section" aria-labelledby="portfolio-title">
+<section id="request-quote" class="portfolio-section" aria-labelledby="portfolio-title">
 	<div class="portfolio-container">
 		<header class="portfolio-header">
-			<p class="eyebrow">Our Portfolio</p>
-			<h2 id="portfolio-title">Plumbing Projects We've Done</h2>
+			<p class="eyebrow">FREE PLUMBING ESTIMATE</p>
+			<h2 id="portfolio-title">NEED A PLUMBER? GET A FREE QUOTE</h2>
 		</header>
 
 		<article class="featured-project">
@@ -25,232 +26,44 @@ import portfolioImage from '../assets/portfolio.png';
 			</figure>
 
 			<div class="project-card">
-				<h3>Whole-Home Plumbing Overhauls</h3>
-				<p class="project-meta">
-					<span>26 November 2025</span>
-					<span>Montréal, QC H0H 0H0</span>
-				</p>
-				<Image
-					class="project-thumbnail"
-					src={portfolioImage}
-					alt="Plumber working beneath a kitchen sink"
-					width={1672}
-					height={941}
-					widths={[480, 640, 960, 1280]}
-					sizes="(max-width: 800px) calc(100vw - 6rem), 30vw"
-					loading="lazy"
-				/>
-				<a class="project-link" href="/#contact">Explore Details</a>
+				<h3>Need Plumbing Help?</h3>
+				<p class="project-intro">Tell us what you need and we&apos;ll help you take the next step.</p>
+				<GHLLeadForm />
 			</div>
 		</article>
 	</div>
 </section>
 
 <style>
-	.portfolio-section {
-		background: white;
-		color: var(--color-plombera-navy-950);
-	}
+	.portfolio-section { background: white; color: var(--color-plombera-navy-950); }
+	.portfolio-container { width: min(calc(100% - 2.5rem), 1480px); margin-inline: auto; padding-block: clamp(56px, 5vw, 72px) clamp(72px, 8vw, 112px); }
+	.portfolio-header { margin: 0 auto clamp(52px, 5vw, 70px); text-align: center; }
+	.eyebrow { display: inline-flex; width: fit-content; margin: 0 0 27px; padding: 6px 13px 5px; border: 1px solid var(--color-plombera-navy-950); border-radius: var(--radius-pill); font-family: var(--font-display); font-size: 15px; font-weight: 700; line-height: 1; text-transform: uppercase; }
+	.portfolio-header h2 { max-width: 760px; margin: 0 auto; font-size: clamp(34px, 3.5vw, 52px); line-height: 0.98; letter-spacing: -0.035em; }
+	.featured-project { position: relative; }
+	.project-image-wrap { margin: 0; overflow: hidden; aspect-ratio: 1.64; background: var(--color-plombera-surface); }
+	.project-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+	.project-card { position: absolute; z-index: 1; top: 5%; right: 8%; width: min(40%, 510px); padding: 34px 32px 28px; border-radius: var(--radius-card); background: white; box-shadow: var(--shadow-float); }
+	.project-card h3 { margin: 0; font-size: clamp(24px, 1.9vw, 30px); line-height: 1.04; letter-spacing: -0.025em; }
+	.project-intro { max-width: 360px; margin: 10px 0 20px; color: var(--color-plombera-muted); font-size: 14px; line-height: 1.4; }
 
-	.portfolio-container {
-		width: min(calc(100% - 2.5rem), 1480px);
-		margin-inline: auto;
-		padding-block: clamp(56px, 5vw, 72px) clamp(72px, 8vw, 112px);
-	}
-
-	.portfolio-header {
-		margin: 0 auto clamp(52px, 5vw, 70px);
-		text-align: center;
-	}
-
-	.eyebrow {
-		display: inline-flex;
-		width: fit-content;
-		margin: 0 0 27px;
-		padding: 6px 13px 5px;
-		border: 1px solid var(--color-plombera-navy-950);
-		border-radius: var(--radius-pill);
-		font-family: var(--font-display);
-		font-size: 15px;
-		font-weight: 700;
-		line-height: 1;
-		text-transform: uppercase;
-	}
-
-	.portfolio-header h2 {
-		margin: 0;
-		font-size: clamp(34px, 3.5vw, 52px);
-		line-height: 0.98;
-		letter-spacing: -0.035em;
-	}
-
-	.featured-project {
-		position: relative;
-	}
-
-	.project-image-wrap {
-		margin: 0;
-		overflow: hidden;
-		aspect-ratio: 1.64;
-		background: var(--color-plombera-surface);
-	}
-
-	.project-image {
-		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
-	.project-card {
-		position: absolute;
-		z-index: 1;
-		top: 15%;
-		right: 15%;
-		width: min(36%, 490px);
-		padding: 48px 32px 44px;
-		border-radius: var(--radius-card);
-		background: white;
-		box-shadow: var(--shadow-card);
-	}
-
-	.project-card h3 {
-		margin: 0;
-		font-size: clamp(21px, 1.55vw, 26px);
-		line-height: 1.04;
-		letter-spacing: -0.025em;
-	}
-
-	.project-meta {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 9px 20px;
-		margin: 12px 0 30px;
-		color: var(--color-plombera-navy-950);
-		font-size: 17px;
-		line-height: 1.2;
-	}
-
-	.project-thumbnail {
-		display: block;
-		width: 100%;
-		aspect-ratio: 1.23;
-		border-radius: 15px;
-		object-fit: cover;
-	}
-
-	.project-link {
-		display: inline-flex;
-		min-height: 53px;
-		align-items: center;
-		justify-content: center;
-		margin-top: 30px;
-		padding-inline: 24px;
-		border-radius: var(--radius-pill);
-		background: var(--color-plombera-yellow-400);
-		box-shadow: 0 3px 0 var(--color-plombera-navy-950);
-		color: var(--color-plombera-navy-950);
-		font-size: 16px;
-		font-weight: 800;
-		text-decoration: none;
-		transition: background-color 180ms ease, transform 180ms ease;
-	}
-
-	.project-link:hover {
-		background: var(--color-plombera-yellow-300);
-		transform: translateY(-1px);
-	}
-
-	.project-link:focus-visible {
-		outline: 3px solid var(--color-plombera-blue-600);
-		outline-offset: 4px;
+	@media (max-width: 1100px) {
+		.project-card { position: relative; top: auto; right: auto; width: auto; margin: -56px 28px 0; }
 	}
 
 	@media (max-width: 800px) {
-		.portfolio-container {
-			padding-block: 56px 76px;
-		}
-
-		.portfolio-header {
-			margin-bottom: 38px;
-		}
-
-		.portfolio-header h2 {
-			font-size: clamp(32px, 8vw, 44px);
-		}
-
-		.project-card {
-			position: relative;
-			top: auto;
-			right: auto;
-			width: auto;
-			margin: -42px 14px 0;
-			padding: 32px 24px 30px;
-		}
-
-		.project-meta {
-			font-size: 15px;
-			margin-bottom: 23px;
-		}
-
-		.project-link {
-			margin-top: 25px;
-			font-size: 14px;
-		}
+		.portfolio-container { padding-block: 56px 76px; }
+		.portfolio-header { margin-bottom: 38px; }
+		.portfolio-header h2 { font-size: clamp(32px, 8vw, 44px); }
+		.project-card { margin: -42px 14px 0; padding: 32px 24px 30px; }
 	}
 
 	@media (max-width: 480px) {
-		.portfolio-container {
-			width: min(calc(100% - 2rem), 1480px);
-		}
-
-		.eyebrow {
-			margin-bottom: 20px;
-			font-size: 12px;
-		}
-
-		.portfolio-header {
-			margin-bottom: 32px;
-		}
-
-		.portfolio-header h2 {
-			font-size: clamp(31px, 9vw, 40px);
-		}
-
-		.project-card {
-			margin-inline: 8px;
-			padding: 27px 20px 25px;
-		}
-
-		.project-card h3 {
-			font-size: 22px;
-		}
-
-		.project-meta {
-			gap: 6px 12px;
-			margin-top: 11px;
-			font-size: 13px;
-		}
-
-		.project-thumbnail {
-			border-radius: 12px;
-		}
-
-		.project-link {
-			min-height: 46px;
-			padding-inline: 19px;
-			margin-top: 22px;
-			font-size: 13px;
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.project-link {
-			transition-duration: 0.01ms;
-		}
-
-		.project-link:hover {
-			transform: none;
-		}
+		.portfolio-container { width: min(calc(100% - 2rem), 1480px); }
+		.eyebrow { margin-bottom: 20px; font-size: 12px; }
+		.portfolio-header { margin-bottom: 32px; }
+		.portfolio-header h2 { font-size: clamp(31px, 9vw, 40px); }
+		.project-card { margin-inline: 8px; padding: 27px 20px 25px; }
+		.project-card h3 { font-size: 22px; }
 	}
 </style>

@@ -9,7 +9,7 @@ const quickLinks = [
 	{ label: 'Services', href: '/#services' },
 	{ label: 'About Us', href: '/#about' },
 	{ label: 'Our Blog', href: '/#blog' },
-	{ label: 'Contact', href: '/#contact' },
+	{ label: 'Contact', href: '/#request-quote' },
 	{ label: 'FAQs', href: '/#faq' },
 ];
 
@@ -37,7 +37,7 @@ const hours = [
 				<p class="footer-description">Plumbing services for homes and businesses, with practical help when you need it.</p>
 				<div class="social-links" aria-label="Plombera social media links">
 					{socialLinks.map((social) => (
-						<a class="social-link" href="/#contact" aria-label={`${social.icon === 'linkedin' ? 'in — ' : ''}${social.label} contact link`}>
+						<a class="social-link" href="/#request-quote" aria-label={`${social.icon === 'linkedin' ? 'in — ' : ''}${social.label} contact link`}>
 							{social.icon === 'facebook' && <span aria-hidden="true" class="facebook-icon">f</span>}
 							{social.icon === 'linkedin' && <span aria-hidden="true" class="linkedin-icon">in</span>}
 							{social.icon === 'youtube' && (

@@ -32,6 +32,7 @@ import Footer from '../components/Footer.astro';
 		'Contact': 'Contact',
 		'Contact Us': 'Nous contacter',
 		'Contact Us Today': 'Contactez-nous aujourd’hui',
+		'Get a Free Quote': 'Obtenir une soumission gratuite',
 		'FAQs': 'FAQ',
 		'FAQ': 'FAQ',
 		'Legal': 'Mentions légales',
@@ -94,6 +95,22 @@ import Footer from '../components/Footer.astro';
 		'Fast & Reliable Repair': 'Réparation rapide et fiable',
 		'Follow-Up & Satisfaction': 'Suivi et satisfaction',
 		'Our Portfolio': 'Nos réalisations',
+		'FREE PLUMBING ESTIMATE': 'ESTIMATION DE PLOMBERIE GRATUITE',
+		'NEED A PLUMBER? GET A FREE QUOTE': 'BESOIN D’UN PLOMBIER? OBTENEZ UNE SOUMISSION GRATUITE',
+		'Need Plumbing Help?': 'Besoin d’aide en plomberie?',
+		'Tell us what you need and we\'ll help you take the next step.': 'Dites-nous ce dont vous avez besoin et nous vous aiderons à déterminer la prochaine étape.',
+		'GHL FORM PREVIEW — NOT CONNECTED': 'APERÇU DU FORMULAIRE GHL — NON CONNECTÉ',
+		'Add a public GHL form URL to enable this form. This preview cannot accept or submit personal information.': 'Ajoutez l’URL publique d’un formulaire GHL pour activer ce formulaire. Cet aperçu ne peut pas recueillir ni transmettre de renseignements personnels.',
+		'Free plumbing quote form preview': 'Aperçu du formulaire de soumission de plomberie',
+		'Nonfunctional free plumbing quote form preview': 'Aperçu non fonctionnel du formulaire de soumission de plomberie',
+		'Full Name': 'Nom complet',
+		'Email Address': 'Adresse courriel',
+		'Phone Number': 'Numéro de téléphone',
+		'Plumbing Service': 'Service de plomberie',
+		'Select a service': 'Sélectionnez un service',
+		'Other': 'Autre',
+		'GET MY FREE QUOTE': 'OBTENIR MA SOUMISSION GRATUITE',
+		'Your information is used to respond to your request. See our': 'Vos renseignements servent à répondre à votre demande. Consultez notre',
 		'Plumbing Projects We\'ve Done': 'Projets de plomberie réalisés',
 		'Whole-Home Plumbing Overhauls': 'Modernisation complète de la plomberie',
 		'Explore Details': 'Voir les détails',
@@ -136,6 +153,10 @@ import Footer from '../components/Footer.astro';
 		'Information you provide': 'Renseignements que vous fournissez',
 		'Website information': 'Renseignements sur le site Web',
 		'Third-party services': 'Services tiers',
+		'Lead follow-up': 'Suivi des demandes',
+		'If you contact Plombera by phone or another available contact method, information you choose to share may be used to respond to your request and provide customer support. If the quote form is activated, it may collect your name, email address, phone number, and the plumbing service you select.': 'Si vous communiquez avec Plombera par téléphone ou par un autre moyen disponible, les renseignements que vous choisissez de partager peuvent être utilisés pour répondre à votre demande et vous offrir du soutien. Si le formulaire de soumission est activé, il peut recueillir votre nom, votre adresse courriel, votre numéro de téléphone et le service de plomberie sélectionné.',
+		'Links or phone actions may take you to services outside this website. Their privacy practices are governed by their own policies, so review those policies before sharing information. If a GoHighLevel form is enabled, GoHighLevel will process submitted lead information as a third-party service provider under the business’s account configuration.': 'Les liens ou les actions téléphoniques peuvent vous diriger vers des services externes. Leurs pratiques de confidentialité sont régies par leurs propres politiques; consultez-les avant de partager des renseignements. Si un formulaire GoHighLevel est activé, GoHighLevel traitera les renseignements soumis comme fournisseur de services tiers selon la configuration du compte de l’entreprise.',
+		'Information submitted through a quote form may be used to respond to your request and communicate with you about that request. The business should review and confirm its retention, consent, and communication practices before activating the form for production use.': 'Les renseignements transmis par un formulaire de soumission peuvent servir à répondre à votre demande et à communiquer avec vous à ce sujet. L’entreprise devrait réviser et confirmer ses pratiques de conservation, de consentement et de communication avant d’activer le formulaire en production.',
 		'Your questions': 'Vos questions',
 		'All Rights Reserved': 'Tous droits réservés',
 	};
@@ -161,8 +182,8 @@ import Footer from '../components/Footer.astro';
 			if (!node.parentElement || ['SCRIPT', 'STYLE'].includes(node.parentElement.tagName)) return;
 			node.nodeValue = translateValue(node.nodeValue, language);
 		});
-		document.querySelectorAll('[aria-label], [alt]').forEach((element) => {
-			for (const attribute of ['aria-label', 'alt']) {
+		document.querySelectorAll('[aria-label], [alt], [placeholder]').forEach((element) => {
+			for (const attribute of ['aria-label', 'alt', 'placeholder']) {
 				if (element.hasAttribute(attribute)) element.setAttribute(attribute, translateValue(element.getAttribute(attribute), language));
 			}
 		});

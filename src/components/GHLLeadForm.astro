@@ -1,0 +1,88 @@
+---
+interface Props {
+	/** Public HTTPS URL copied from the GHL form's official iframe embed. */
+	formUrl?: string;
+}
+
+const { formUrl = import.meta.env.PUBLIC_GHL_FORM_URL } = Astro.props;
+const isConfigured = typeof formUrl === 'string' && /^https:\/\//.test(formUrl);
+---
+
+<div class="ghl-form">
+	{isConfigured ? (
+		<iframe
+			src={formUrl}
+			title="Plombera free plumbing quote form"
+			loading="lazy"
+			class="ghl-iframe"
+			allow="camera; microphone; autoplay; encrypted-media; fullscreen"
+		></iframe>
+	) : (
+		<div class="ghl-preview" data-ghl-preview>
+			<p class="ghl-preview-label">GHL FORM PREVIEW — NOT CONNECTED</p>
+			<p class="ghl-preview-copy">Add a public GHL form URL to enable this form. This preview cannot accept or submit personal information.</p>
+			<form aria-label="Nonfunctional free plumbing quote form preview">
+				<fieldset disabled>
+					<legend class="sr-only">Free plumbing quote form preview</legend>
+					<label>
+						<span>Full Name <b aria-hidden="true">*</b></span>
+						<input type="text" name="full-name" placeholder="Full Name" aria-required="true" required />
+					</label>
+					<label>
+						<span>Email Address <b aria-hidden="true">*</b></span>
+						<input type="email" name="email" placeholder="Email Address" aria-required="true" required />
+					</label>
+					<label>
+						<span>Phone Number <b aria-hidden="true">*</b></span>
+						<input type="tel" name="phone" placeholder="Phone Number" aria-required="true" required />
+					</label>
+					<label>
+						<span>Plumbing Service <b aria-hidden="true">*</b></span>
+						<select name="service" aria-required="true" required>
+							<option value="">Select a service</option>
+							<option>Leak Detection &amp; Repair</option>
+							<option>Water Heater Services</option>
+							<option>Pipe Installation &amp; Replacement</option>
+							<option>Toilet Repair &amp; Installation</option>
+							<option>Emergency Plumbing</option>
+							<option>Other</option>
+						</select>
+					</label>
+					<button type="button">GET MY FREE QUOTE</button>
+				</fieldset>
+			</form>
+		</div>
+	)}
+
+	<p class="ghl-privacy-notice">
+		Your information is used to respond to your request. See our <a href="/privacy-policy">Privacy Policy</a>.
+	</p>
+</div>
+
+<style>
+	.ghl-form { width: 100%; }
+	.ghl-iframe { display: block; width: 100%; min-height: 660px; border: 0; }
+	.ghl-preview { padding: 16px; border: 1px dashed var(--color-plombera-blue-600); border-radius: 12px; background: #f8faff; }
+	.ghl-preview-label { margin: 0 0 7px; color: var(--color-plombera-blue-600); font-size: 10px; font-weight: 800; letter-spacing: 0.07em; line-height: 1.2; }
+	.ghl-preview-copy { margin: 0 0 14px; color: var(--color-plombera-muted); font-size: 12px; line-height: 1.35; }
+	.ghl-preview fieldset { display: grid; gap: 12px; margin: 0; padding: 0; border: 0; }
+	.ghl-preview label { display: grid; gap: 6px; color: var(--color-plombera-navy-950); font-size: 12px; font-weight: 700; }
+	.ghl-preview input,
+	.ghl-preview select { box-sizing: border-box; width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid var(--color-plombera-line); border-radius: 8px; background: white; color: var(--color-plombera-ink); font: inherit; font-size: 14px; }
+	.ghl-preview input::placeholder { color: #7b8492; }
+	.ghl-preview b { color: #a32020; }
+	.ghl-preview button { min-height: 48px; border: 0; border-radius: var(--radius-pill); background: var(--color-plombera-yellow-400); color: var(--color-plombera-navy-950); font: inherit; font-size: 13px; font-weight: 800; }
+	.ghl-preview [disabled] { cursor: not-allowed; opacity: 0.72; }
+	.ghl-privacy-notice { margin: 14px 0 0; color: var(--color-plombera-muted); font-size: 11px; line-height: 1.4; }
+	.ghl-privacy-notice a { color: var(--color-plombera-blue-600); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+	.ghl-privacy-notice a:focus-visible { outline: 2px solid var(--color-plombera-blue-600); outline-offset: 3px; }
+	.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+	@media (max-width: 600px) {
+		.ghl-iframe { min-height: 740px; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.ghl-iframe { scroll-behavior: auto; }
+	}
+</style>
