@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<main class="privacy-page">
+		<div class="privacy-container">
+			<a class="back-link" href="/">← Back to home</a>
+			<p class="eyebrow">Legal</p>
+			<h1>Privacy Policy</h1>
+			<p class="last-updated">Last updated: October 19, 2026</p>
+
+			<div class="privacy-copy">
+				<p>This privacy policy is provided for the Plombera website. It explains, in general terms, how information may be handled when you visit this site or contact Plombera.</p>
+
+				<h2>Information you provide</h2>
+				<p>If you contact Plombera by phone or another available contact method, information you choose to share may be used to respond to your request and provide customer support.</p>
+
+				<h2>Website information</h2>
+				<p>This site may receive routine technical information from your browser or hosting provider when pages are requested. Plombera does not ask you to submit personal information through this website unless a contact method specifically requests it.</p>
+
+				<h2>Third-party services</h2>
+				<p>Links or phone actions may take you to services outside this website. Their privacy practices are governed by their own policies, so review those policies before sharing information.</p>
+
+				<h2>Your questions</h2>
+				<p>For questions about this policy or how your information is handled, call Plombera at <a href="tel:+12343454574">(234) 345-4574</a>.</p>
+
+				<p class="policy-note">This page is a general website notice and should be reviewed and approved for the business’s actual privacy practices before production use.</p>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.privacy-page {
+		min-height: 70vh;
+		background: var(--color-plombera-surface);
+		color: var(--color-plombera-navy-950);
+	}
+
+	.privacy-container {
+		width: min(calc(100% - 2.5rem), 900px);
+		margin-inline: auto;
+		padding-block: 150px 90px;
+	}
+
+	.back-link {
+		display: inline-block;
+		margin-bottom: 45px;
+		color: var(--color-plombera-blue-600);
+		font-size: 14px;
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	.back-link:hover { color: var(--color-plombera-navy-950); }
+
+	.eyebrow {
+		display: inline-flex;
+		margin: 0 0 18px;
+		padding: 6px 11px 5px;
+		border: 1px solid var(--color-plombera-navy-950);
+		border-radius: var(--radius-pill);
+		font-family: var(--font-display);
+		font-size: 12px;
+		font-weight: 800;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	h1 {
+		margin: 0;
+		font-size: clamp(42px, 6vw, 72px);
+		line-height: 0.95;
+	}
+
+	.last-updated {
+		margin: 17px 0 0;
+		color: var(--color-plombera-muted);
+		font-size: 14px;
+	}
+
+	.privacy-copy {
+		max-width: 720px;
+		margin-top: 47px;
+		color: var(--color-plombera-ink);
+		font-size: 16px;
+		line-height: 1.65;
+	}
+
+	.privacy-copy p { margin: 0 0 22px; }
+	.privacy-copy h2 { margin: 35px 0 9px; font-size: 24px; line-height: 1.05; }
+	.privacy-copy a { color: var(--color-plombera-blue-600); font-weight: 700; }
+	.policy-note { color: var(--color-plombera-muted); font-size: 14px; }
+
+	@media (max-width: 600px) {
+		.privacy-container { width: min(calc(100% - 2rem), 900px); padding-block: 120px 66px; }
+		.back-link { margin-bottom: 35px; }
+		.privacy-copy { margin-top: 36px; font-size: 15px; }
+	}
+</style>
