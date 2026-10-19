@@ -1,6 +1,6 @@
 # GoHighLevel lead form integration
 
-The quote section is ready for a real GoHighLevel (GHL) form, but no GHL form URL is committed to this repository. Until configured, the page shows a clearly marked, disabled preview that cannot collect or submit personal information.
+The quote section uses the official GoHighLevel (GHL) inline iframe for the Plombera estimation form. The public form URL and form ID are not private credentials. The reusable component retains a clearly marked, disabled preview for any page where a real form URL has not been supplied.
 
 ## Create the form in GHL
 
@@ -16,23 +16,33 @@ The quote section is ready for a real GoHighLevel (GHL) form, but no GHL form UR
 4. Map each field to the intended GHL contact field or custom field. Confirm the phone field uses the desired phone format.
 5. Configure any consent checkbox, notification, pipeline, tags, automation, and follow-up messages in GHL only after the business approves the workflow.
 
-## Retrieve and activate the official embed
+## Current official embed
+
+The homepage is configured with this official GHL iframe URL and form ID:
+
+```text
+https://api.leadconnectorhq.com/widget/form/P7SlR4VtUD0pZKobLsYD
+```
+
+The companion `https://link.msgsndr.com/js/form_embed.js` script is loaded once by `GHLLeadForm.astro` to support the official inline embed behavior. No private API token or webhook credential is used in browser code.
+
+## Retrieve or change the official embed
 
 1. Open the form’s **Integrate** or **Embed** option in GHL.
 2. Choose the official inline/iframe embed option and copy the public `https://` iframe source URL. Do not copy private API credentials into the site.
-3. Set the public build-time environment variable:
+3. Pass the public iframe URL to `GHLLeadForm` in `src/sections/Portfolio.astro`, or set the public build-time environment variable for another page:
 
 ```sh
 PUBLIC_GHL_FORM_URL=https://your-official-ghl-form-embed-url
 ```
 
-4. Restart the Astro dev server or rebuild the static site. Astro reads this value at build time, and `GHLLeadForm.astro` replaces the disabled preview with the real iframe.
+4. Restart the Astro dev server or rebuild the static site. `GHLLeadForm.astro` renders the real iframe when a valid public HTTPS URL is supplied and otherwise renders the disabled preview.
 5. Keep the URL out of committed source if the GHL URL is environment-specific. A public embed URL is not a secret, but it should still be managed as deployment configuration.
 
 ## Local and production verification
 
 - Run `npm run build` and confirm both homepage and privacy-policy routes build.
-- Open `/#request-quote` and verify the official form loads without horizontal overflow.
+- Open `/#request-quote` and verify the official English form loads without horizontal overflow.
 - Submit test data only in the intended GHL test or staging workflow. Confirm a contact is created, the selected service is mapped correctly, and any approved notification or automation runs.
 - Confirm validation, error, success, keyboard focus, and consent states inside the actual GHL form.
 - Verify the browser console and network panel for blocked iframe, CSP, or mixed-content errors.
@@ -42,7 +52,7 @@ PUBLIC_GHL_FORM_URL=https://your-official-ghl-form-embed-url
 
 The form is an iframe, so the parent Astro page cannot style its inner labels, controls, validation messages, fonts, colors, or success state. Configure those styles in the GHL Form Builder. The outer white card, spacing, responsive layout, and privacy link are controlled by Plombera.
 
-The site’s English/French toggle can translate Astro-rendered copy around the iframe, but it cannot translate content inside a GHL iframe. For bilingual production use, create and configure separate English and French GHL forms, then choose the appropriate public form URL by page or deployment configuration. Confirm both forms use equivalent field mappings and consent language.
+The site’s English/French toggle can translate Astro-rendered copy around the iframe, but it cannot translate content inside the GHL iframe. The configured embedded form is intentionally English. For bilingual production use, create and configure separate English and French GHL forms, then choose the appropriate public form URL by page or deployment configuration. Confirm both forms use equivalent field mappings and consent language.
 
 ## Before production
 
