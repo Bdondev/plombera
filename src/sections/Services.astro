@@ -48,7 +48,7 @@ const services = [
 			{services.map((service) => (
 				<article class:list={["service-card", { featured: service.featured }]}>
 					{service.featured && (
-						<Image class="featured-image" src={service.image} alt={service.imageAlt} width={300} height={375} loading="lazy" />
+						<Image class="featured-image" src={service.image} alt={service.imageAlt} width={300} height={375} widths={[180, 240, 300]} sizes="(max-width: 800px) 42vw, 300px" loading="lazy" />
 					)}
 
 					<div class="service-main">

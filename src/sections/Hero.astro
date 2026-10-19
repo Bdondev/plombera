@@ -6,11 +6,11 @@ import heroPlumber from '../assets/hero-2.png';
 
 <main id="main-content">
 	<section class="hero" aria-labelledby="hero-title">
-		<Image class="hero-background" src={heroBackground} alt="Plumber repairing pipes beneath a sink" width={1672} height={941} loading="eager" fetchpriority="high" />
+		<Image class="hero-background" src={heroBackground} alt="Plumber repairing pipes beneath a sink" width={1672} height={941} widths={[640, 960, 1280, 1672]} sizes="100vw" quality={70} loading="eager" fetchpriority="high" />
 		<div class="hero-shade" aria-hidden="true"></div>
 		<div class="hero-blue" aria-hidden="true"></div>
 		<div class="hero-navy" aria-hidden="true"></div>
-		<Image class="hero-plumber" src={heroPlumber} alt="" width={1122} height={1402} loading="eager" />
+		<Image class="hero-plumber" src={heroPlumber} alt="" width={1122} height={1402} widths={[480, 640, 960]} sizes="(max-width: 600px) 72vw, 53vw" loading="eager" />
 		<div class="hero-content">
 			<p class="eyebrow">Plumbing emergencies? We fix fast!</p>
 			<h1 id="hero-title">Trusted Local<br />Plumbers Ready<br />When You Need Us</h1>

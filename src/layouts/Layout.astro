@@ -20,7 +20,7 @@ import Footer from '../components/Footer.astro';
 	</body>
 </html>
 
-<script is:inline>
+<script>
 	const translations = {
 		'Home': 'Accueil',
 		'About': 'À propos',
@@ -168,14 +168,14 @@ import Footer from '../components/Footer.astro';
 		});
 		document.querySelectorAll('[data-language-toggle]').forEach((button) => {
 			button.setAttribute('aria-pressed', language === 'fr' ? 'true' : 'false');
-			button.setAttribute('aria-label', language === 'fr' ? 'Passer à l’anglais' : 'Passer au français');
+			button.setAttribute('aria-label', language === 'fr' ? 'EN — Passer à l’anglais' : 'FR — Switch to French');
 			const label = button.querySelector('[data-language-label]');
 			if (label) label.textContent = language === 'fr' ? 'EN' : 'FR';
 		});
 	};
 
 	const initialLanguage = localStorage.getItem('plombera-language') || 'en';
-	translatePage(initialLanguage);
+	if (initialLanguage === 'fr') translatePage('fr');
 	document.querySelectorAll('[data-language-toggle]').forEach((button) => {
 		button.addEventListener('click', () => {
 			const language = document.documentElement.lang === 'fr' ? 'en' : 'fr';

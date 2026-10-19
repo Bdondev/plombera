@@ -67,10 +67,10 @@ const socialIcons = [
 				{teamMembers.map((member) => (
 					<article class:list={['team-card', { featured: member.featured }]} tabindex="0">
 						<div class="team-card-top">
-							<Image class="team-image" src={member.image} alt={member.alt} width={1122} height={1402} loading="lazy" />
+							<Image class="team-image" src={member.image} alt={member.alt} width={1122} height={1402} widths={[320, 480, 640, 960]} sizes="(max-width: 600px) 82vw, (max-width: 900px) 46vw, 27vw" loading="lazy" />
 							<div class="social-links" aria-label={`${member.name} contact links`}>
 								{socialIcons.map((social) => (
-									<a href="/#contact" aria-label={`Contact Plombera about ${member.name}'s ${social.label} profile`}>
+									<a href="/#contact" aria-label={`${social.icon === 'linkedin' ? 'in — ' : ''}Contact Plombera about ${member.name}'s ${social.label} profile`}>
 										{social.icon === 'x' && <span aria-hidden="true" class="social-x">X</span>}
 										{social.icon === 'linkedin' && <span aria-hidden="true" class="social-linkedin">in</span>}
 										{social.icon === 'facebook' && <span aria-hidden="true" class="social-facebook">f</span>}

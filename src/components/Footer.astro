@@ -36,8 +36,8 @@ const hours = [
 				</a>
 				<p class="footer-description">Plumbing services for homes and businesses, with practical help when you need it.</p>
 				<div class="social-links" aria-label="Plombera social media links">
-					{socialLinks.map((social, index) => (
-						<a class:list={['social-link', { highlighted: index === 0 }]} href="/#contact" aria-label={`${social.label} contact link`}>
+					{socialLinks.map((social) => (
+						<a class="social-link" href="/#contact" aria-label={`${social.icon === 'linkedin' ? 'in — ' : ''}${social.label} contact link`}>
 							{social.icon === 'facebook' && <span aria-hidden="true" class="facebook-icon">f</span>}
 							{social.icon === 'linkedin' && <span aria-hidden="true" class="linkedin-icon">in</span>}
 							{social.icon === 'youtube' && (
@@ -123,7 +123,7 @@ const hours = [
 	.footer-description {
 		max-width: 260px;
 		margin: 16px 0 0;
-		color: var(--color-plombera-muted);
+		color: #5f6878;
 		font-size: 14px;
 		line-height: 1.35;
 	}
@@ -139,7 +139,7 @@ const hours = [
 	.footer-column a,
 	.footer-column li,
 	.footer-description,
-	.footer-bottom { color: var(--color-plombera-muted); font-size: 14px; line-height: 1.35; }
+	.footer-bottom { color: #5f6878; font-size: 14px; line-height: 1.35; }
 	.footer-column a { text-decoration: none; }
 	.footer-column a:hover { color: var(--color-plombera-blue-600); }
 
@@ -159,8 +159,8 @@ const hours = [
 		color: var(--color-plombera-navy-950);
 		text-decoration: none;
 	}
-	.social-link.highlighted { background: var(--color-plombera-yellow-400); }
-	.social-link:hover { background: var(--color-plombera-yellow-300); }
+	.social-link:hover,
+	.social-link:focus-visible { background: var(--color-plombera-yellow-300); }
 	.social-link svg { width: 17px; height: 17px; }
 	.facebook-icon { font-size: 21px; font-weight: 800; line-height: 1; }
 	.linkedin-icon { font-size: 16px; font-weight: 800; letter-spacing: -0.08em; }
@@ -168,9 +168,9 @@ const hours = [
 
 	.contact-list { gap: 14px !important; }
 	.contact-list li { display: flex; align-items: flex-start; gap: 10px; }
-	.contact-list svg { width: 18px; height: 18px; flex: none; color: var(--color-plombera-muted); }
-	.contact-list a { color: var(--color-plombera-muted); }
-	.contact-note { color: var(--color-plombera-muted); }
+	.contact-list svg { width: 18px; height: 18px; flex: none; color: #5f6878; }
+	.contact-list a { color: #5f6878; }
+	.contact-note { color: #5f6878; }
 
 	.hours-card {
 		padding: 11px 17px;
@@ -185,7 +185,7 @@ const hours = [
 		justify-content: space-between;
 		gap: 12px;
 		border-bottom: 1px solid #e6e7eb;
-		color: var(--color-plombera-muted);
+		color: #5f6878;
 		font-size: 12px;
 		white-space: nowrap;
 	}
@@ -202,7 +202,7 @@ const hours = [
 		border-top: 1px solid #dedfe3;
 	}
 	.footer-bottom p { margin: 0; }
-	.footer-bottom a { color: var(--color-plombera-muted); text-decoration: none; }
+	.footer-bottom a { color: #5f6878; text-decoration: none; }
 	.footer-bottom a:hover { color: var(--color-plombera-blue-600); }
 	.footer-wordmark {
 		width: 100%;

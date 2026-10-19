@@ -44,7 +44,7 @@ const articles = [
 			{articles.map((article) => (
 				<article class="blog-card">
 					<div class="blog-visual">
-						<Image class="blog-image" src={article.image} alt={article.imageAlt} width={1382} height={1138} loading="lazy" />
+						<Image class="blog-image" src={article.image} alt={article.imageAlt} width={1382} height={1138} widths={[480, 640, 960, 1382]} sizes="(max-width: 600px) calc(100vw - 2rem), 50vw" loading="lazy" />
 						<div class="category-list" aria-label="Article categories">
 							{article.categories.map((category) => (
 								<span class:list={['category-badge', { highlighted: category.highlighted }]}>{category.label}</span>
@@ -221,7 +221,7 @@ const articles = [
 		text-decoration: none;
 	}
 
-	.blog-link.highlighted { color: #d0a900; }
+	.blog-link.highlighted { color: #866b00; }
 	.blog-link:hover { color: var(--color-plombera-blue-600); }
 	.blog-link.highlighted:hover { color: var(--color-plombera-navy-950); }
 	.blog-link:focus-visible { outline: 3px solid var(--color-plombera-blue-600); outline-offset: 4px; }
