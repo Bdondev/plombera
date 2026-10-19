@@ -72,7 +72,6 @@ const services = [
 
 <style>
 	.services-section {
-		overflow: hidden;
 		background: var(--color-plombera-surface);
 		color: var(--color-plombera-navy-950);
 	}
@@ -270,8 +269,8 @@ const services = [
 		.service-details li { text-align: center; white-space: normal; }
 		.featured-image {
 			top: -24px;
-			right: -8px;
-			width: 165px;
+			right: 8px;
+			width: 155px;
 			transform: rotate(11deg);
 		}
 		.service-card.featured { padding-top: 220px; }
@@ -279,14 +278,15 @@ const services = [
 
 	@media (max-width: 480px) {
 		.services-container { width: min(calc(100% - 2rem), 1170px); }
-		.services-header { gap: 16px; }
+		.services-header { flex-direction: column; gap: 14px; }
+		.services-header-link { align-self: flex-start; }
 		.services-header-link { min-height: 42px; padding-inline: 13px; font-size: 11px; }
 		.service-card { padding: 20px; }
 		.service-card.featured { padding-top: 210px; }
 		.service-card h3 { font-size: 22px; }
 		.service-link { min-height: 43px; padding-inline: 17px; font-size: 13px; }
 		.service-details li { padding: 6px 9px 5px; font-size: 11px; }
-		.featured-image { width: 150px; }
+		.featured-image { right: 10px; width: 140px; }
 	}
 
 	@media (prefers-reduced-motion: reduce) {
