@@ -41,6 +41,11 @@
 		text-rendering: optimizeLegibility;
 	}
 
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 120px;
+	}
+
 	body {
 		margin: 0;
 		background: var(--color-white);
@@ -62,4 +67,16 @@
 	a {
 		-webkit-tap-highlight-color: transparent;
 	}
+}
+
+@media (max-width: 1050px) {
+	html { scroll-padding-top: 102px; }
+}
+
+@media (max-width: 600px) {
+	html { scroll-padding-top: 90px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
 }

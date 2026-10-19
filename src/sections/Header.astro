@@ -56,11 +56,12 @@ const links = [
 
 <style>
 	.site-header {
-		position: absolute;
+		position: sticky;
 		z-index: 20;
 		top: clamp(18px, 2.4vw, 35px);
 		left: 0;
 		width: 100%;
+		margin-bottom: -84px;
 		padding-inline: var(--spacing-container);
 	}
 	.header-shell {
@@ -92,6 +93,7 @@ const links = [
 	.mobile-menu { display: none; }
 	a:focus-visible, summary:focus-visible { outline: 3px solid var(--color-plombera-blue-600); outline-offset: 4px; }
 	@media (max-width: 1050px) {
+		.site-header { margin-bottom: -70px; }
 		.header-shell { min-height: 70px; }
 		.desktop-nav { display: none; }
 		.mobile-menu { display: block; position: relative; margin-left: auto; }
@@ -104,7 +106,7 @@ const links = [
 		.mobile-menu a { display: block; padding: 11px 12px; border-radius: 8px; color: var(--color-plombera-navy-950); font-weight: 600; text-decoration: none; }
 	}
 	@media (max-width: 600px) {
-		.site-header { top: 16px; padding-inline: 16px; }
+		.site-header { top: 16px; margin-bottom: -62px; padding-inline: 16px; }
 		.header-shell { min-height: 62px; padding: 7px 10px 7px 16px; }
 		.brand img { width: 143px; }
 		.phone { margin-left: auto; }
