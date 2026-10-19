@@ -20,6 +20,171 @@ import Footer from '../components/Footer.astro';
 	</body>
 </html>
 
+<script is:inline>
+	const translations = {
+		'Home': 'Accueil',
+		'About': 'À propos',
+		'About Us': 'À propos de nous',
+		'Services': 'Services',
+		'Shop': 'Boutique',
+		'Blog': 'Blogue',
+		'Our Blog': 'Notre blogue',
+		'Contact': 'Contact',
+		'Contact Us': 'Nous contacter',
+		'Contact Us Today': 'Contactez-nous aujourd’hui',
+		'FAQs': 'FAQ',
+		'FAQ': 'FAQ',
+		'Legal': 'Mentions légales',
+		'Privacy Policy': 'Politique de confidentialité',
+		'Quick Links': 'Liens rapides',
+		'Contact Us': 'Nous contacter',
+		'Working Hours': 'Heures d’ouverture',
+		'Call Or Chat': 'Appelez ou écrivez',
+		'Call for hours': 'Appelez pour connaître les heures',
+		'All Rights Reserved': 'Tous droits réservés',
+		'Main navigation': 'Navigation principale',
+		'Mobile navigation': 'Navigation mobile',
+		'Footer navigation': 'Navigation du pied de page',
+		'Navigation menu': 'Menu de navigation',
+		'Plombera social media links': 'Liens de médias sociaux de Plombera',
+		'Working hours require confirmation': 'Les heures d’ouverture doivent être confirmées',
+		'Article categories': 'Catégories de l’article',
+		'Our skilled plumbers': 'Nos plombiers qualifiés',
+		'Team carousel controls': 'Commandes du carrousel de l’équipe',
+		'Information you provide': 'Renseignements que vous fournissez',
+		'If you contact Plombera by phone or another available contact method, information you choose to share may be used to respond to your request and provide customer support.': 'Si vous communiquez avec Plombera par téléphone ou par un autre moyen disponible, les renseignements que vous choisissez de partager peuvent être utilisés pour répondre à votre demande et vous offrir du soutien.',
+		'This site may receive routine technical information from your browser or hosting provider when pages are requested. Plombera does not ask you to submit personal information through this website unless a contact method specifically requests it.': 'Ce site peut recevoir des renseignements techniques courants de votre navigateur ou de votre hébergeur lors du chargement des pages. Plombera ne vous demande pas de transmettre de renseignements personnels par ce site, sauf si un moyen de contact le demande expressément.',
+		'Links or phone actions may take you to services outside this website. Their privacy practices are governed by their own policies, so review those policies before sharing information.': 'Les liens ou les actions téléphoniques peuvent vous diriger vers des services externes. Leurs pratiques de confidentialité sont régies par leurs propres politiques; consultez-les avant de partager des renseignements.',
+		'For questions about this policy or how your information is handled, call Plombera at': 'Pour toute question sur cette politique ou le traitement de vos renseignements, appelez Plombera au',
+		'This page is a general website notice and should be reviewed and approved for the business’s actual privacy practices before production use.': 'Cette page est un avis général pour le site Web et devrait être révisée et approuvée selon les pratiques réelles de l’entreprise avant sa mise en production.',
+		'Plumbing emergencies? We fix fast!': 'Urgences de plomberie? Nous intervenons rapidement!',
+		'Trusted Local': 'Des plombiers locaux',
+		'Plumbers Ready': 'prêts à intervenir',
+		'When You Need Us': 'quand vous avez besoin de nous',
+		'Got a leak, burst pipe, or clogged drain? Our emergency plumbers are ready 24/7 to restore your comfort and prevent costly damage.': 'Vous avez une fuite, un tuyau éclaté ou un drain bouché? Nos plombiers d’urgence sont prêts à rétablir votre confort et à prévenir les dégâts coûteux.',
+		'Schedule A Plumber': 'Planifier une intervention',
+		'About Us': 'À propos de nous',
+		'That’s why we offer quick response times, affordable': 'C’est pourquoi nous offrons une réponse rapide et des tarifs abordables',
+		'pricing, and a team of skilled professionals who get the job done without the stress.': 'ainsi qu’une équipe de professionnels qualifiés qui fait le travail sans stress.',
+		'Learn More About Us': 'En savoir plus sur nous',
+		'Plumbing Completed': 'Interventions de plomberie',
+		'Customer Satisfaction': 'Satisfaction client',
+		'Emergency Support': 'Assistance d’urgence',
+		'We use premium materials and proven techniques to ensure your plumbing stays reliable long after the complete.': 'Nous utilisons des matériaux de qualité et des techniques éprouvées pour assurer la fiabilité durable de votre plomberie.',
+		'Our team is committed to the friendly service, expert workmanship, and complete transparency at every step.': 'Notre équipe s’engage à offrir un service attentionné, un travail professionnel et une transparence totale à chaque étape.',
+		'With years of experience & a trusted team of licensed plumbers, we pride ourselves on providing fast solutions.': 'Grâce à notre expérience et à une équipe de plombiers de confiance, nous sommes fiers d’offrir des solutions rapides.',
+		'Our Services': 'Nos services',
+		'Professional Plumbing': 'Services de plomberie',
+		'Learn More': 'En savoir plus',
+		'Leak Detection & Repair': 'Détection et réparation de fuites',
+		'Water Heater Services': 'Services de chauffe-eau',
+		'Pipe Installation & Replacement': 'Installation et remplacement de tuyaux',
+		'Toilet Repair & Installation': 'Réparation et installation de toilettes',
+		'Emergency Plumbing': 'Plomberie d’urgence',
+		'We quickly locate repair leaks to prevent water damage, reduce utility costs, and keep your home safe from minor drips.': 'Nous repérons et réparons rapidement les fuites afin de prévenir les dégâts d’eau et de protéger votre maison.',
+		'Whether you need repair, replacement, or maintenance, we ensure your water heater performs efficiently — delivering reliable.': 'Que vous ayez besoin d’une réparation, d’un remplacement ou d’un entretien, nous veillons au bon fonctionnement de votre chauffe-eau.',
+		'From burst pipes aging plumbing system, our experts provide durable replacement and secure installations for long-term.': 'Pour les tuyaux éclatés ou les systèmes vieillissants, nos experts proposent des remplacements durables et des installations fiables.',
+		'We fix running, leaking, or clogged toilets, and provide professional installation for new upgrades improving comfort.': 'Nous réparons les toilettes qui coulent, fuient ou sont bouchées, et installons des équipements qui améliorent votre confort.',
+		'Plumbing emergencies can strike at any time. Our 24/7 team is ready to respond quickly and restore your peace of mind.': 'Les urgences de plomberie peuvent survenir à tout moment. Notre équipe est prête à intervenir rapidement.',
+		'The Way We Work': 'Notre façon de travailler',
+		'How We Work': 'Comment nous travaillons',
+		'Whether it’s a small leak or full installation, we use high quality materials and professional techniques to ensure lasting results. After every job, we clean up, test system.': 'Qu’il s’agisse d’une petite fuite ou d’une installation complète, nous utilisons des matériaux de qualité et des techniques professionnelles pour des résultats durables.',
+		'Schedule Your Service': 'Planifiez votre service',
+		'Expert Assessment': 'Évaluation experte',
+		'Fast & Reliable Repair': 'Réparation rapide et fiable',
+		'Follow-Up & Satisfaction': 'Suivi et satisfaction',
+		'Our Portfolio': 'Nos réalisations',
+		'Plumbing Projects We\'ve Done': 'Projets de plomberie réalisés',
+		'Whole-Home Plumbing Overhauls': 'Modernisation complète de la plomberie',
+		'Explore Details': 'Voir les détails',
+		'Meet Our Team': 'Rencontrez notre équipe',
+		'Our Skilled Plumbers Teams': 'Nos équipes de plombiers qualifiés',
+		'Water Heater Expert': 'Expert en chauffe-eau',
+		'Senior Plumbing Technician': 'Technicien principal en plomberie',
+		'Lead Plumber': 'Plombier principal',
+		'Emergency Plumber': 'Plombier d’urgence',
+		'Have Questions? We’ve': 'Vous avez des questions?',
+		'Got Answers': 'Nous avons les réponses',
+		'Still Have Questions? We’re': 'Encore des questions?',
+		'Here To Help': 'Nous sommes là pour vous aider',
+		'How often should I have my plumbing inspected?': 'À quelle fréquence devrais-je faire inspecter ma plomberie?',
+		'Why is my water pressure lower than usual?': 'Pourquoi la pression de mon eau est-elle plus faible que d’habitude?',
+		'How can I prevent clogged drains?': 'Comment prévenir les drains bouchés?',
+		'What should I do if a pipe starts leaking?': 'Que faire si un tuyau commence à fuir?',
+		'How do I know if my water heater needs attention?': 'Comment savoir si mon chauffe-eau a besoin d’attention?',
+		'Do you help with plumbing emergencies?': 'Aidez-vous en cas d’urgence de plomberie?',
+		'A regular inspection can help you spot leaks, worn fixtures, and other plumbing concerns before they become disruptive.': 'Une inspection régulière peut aider à repérer les fuites, les appareils usés et d’autres problèmes avant qu’ils ne deviennent gênants.',
+		'A partially closed valve, a clogged fixture, or an issue in the supply line can affect water pressure. A qualified plumber can help identify the cause.': 'Une vanne partiellement fermée, un appareil obstrué ou un problème d’alimentation peut affecter la pression. Un plombier qualifié peut en trouver la cause.',
+		'Use drain screens, avoid putting grease or unsuitable materials down the drain, and address slow drainage before it becomes a blockage.': 'Utilisez des grilles, évitez la graisse et les matériaux inadéquats, et intervenez dès que l’écoulement ralentit.',
+		'Turn off the nearest shutoff valve if it is safe to do so, contain the water, and contact a plumber to assess the leak.': 'Fermez la vanne la plus proche si vous pouvez le faire sans danger, limitez l’eau et contactez un plombier pour évaluer la fuite.',
+		'Changes in hot-water availability, unusual sounds, or visible moisture around the unit are good reasons to arrange an inspection.': 'Une baisse d’eau chaude, des bruits inhabituels ou de l’humidité autour de l’appareil sont de bonnes raisons de demander une inspection.',
+		'Call the number below to discuss your plumbing concern and determine the appropriate next step.': 'Appelez le numéro ci-dessous pour discuter de votre problème et déterminer la prochaine étape.',
+		'Our Latest Blog': 'Notre dernier blogue',
+		'Plumbing Tips & Tricks For': 'Conseils et astuces de plomberie pour',
+		'A Worry-Free Home': 'une maison sans souci',
+		'October 1, 2025': '1 octobre 2025',
+		'October 11, 2025': '11 octobre 2025',
+		'Plumbing Upgrades For A Modern Bathroom': 'Moderniser la plomberie d’une salle de bain',
+		'How To Protect Your Pipes During Winter': 'Comment protéger vos tuyaux durant l’hiver',
+		'Plumbing Emergency We’re Ready 24/7 To Fix It Fast!': 'Urgence de plomberie : prêts à intervenir rapidement, 24/7!',
+		'When a plumbing problem needs attention, our team can help you find the right next step.': 'Lorsqu’un problème de plomberie survient, notre équipe peut vous aider à déterminer la prochaine étape.',
+		'Contact Us Today': 'Contactez-nous aujourd’hui',
+		'Plumbing services for homes and businesses, with practical help when you need it.': 'Des services de plomberie pour les maisons et les entreprises, avec une aide pratique quand vous en avez besoin.',
+		'Privacy Policy': 'Politique de confidentialité',
+		'Last updated: October 19, 2026': 'Dernière mise à jour : 19 octobre 2026',
+		'This privacy policy is provided for the Plombera website. It explains, in general terms, how information may be handled when you visit this site or contact Plombera.': 'Cette politique de confidentialité concerne le site Web de Plombera. Elle explique de façon générale comment les renseignements peuvent être traités lorsque vous visitez le site ou communiquez avec Plombera.',
+		'Information you provide': 'Renseignements que vous fournissez',
+		'Website information': 'Renseignements sur le site Web',
+		'Third-party services': 'Services tiers',
+		'Your questions': 'Vos questions',
+		'All Rights Reserved': 'Tous droits réservés',
+	};
+
+	const reverseTranslations = Object.fromEntries(Object.entries(translations).map(([english, french]) => [french, english]));
+	const translateValue = (value, language) => {
+		const dictionary = language === 'fr' ? translations : reverseTranslations;
+		const trimmed = value.trim();
+		if (trimmed.startsWith('© Copyright ') && trimmed.includes(' – Plombera. ')) {
+			const year = trimmed.match(/^© Copyright (\\d{4})/)?.[1] || new Date().getFullYear();
+			return value.replace(trimmed, language === 'fr' ? `© Copyright ${year} – Plombera. Tous droits réservés` : `© Copyright ${year} – Plombera. All Rights Reserved`);
+		}
+		const translated = dictionary[trimmed];
+		return translated ? value.replace(trimmed, translated) : value;
+	};
+
+	const translatePage = (language) => {
+		document.documentElement.lang = language === 'fr' ? 'fr' : 'en';
+		const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+		const textNodes = [];
+		while (walker.nextNode()) textNodes.push(walker.currentNode);
+		textNodes.forEach((node) => {
+			if (!node.parentElement || ['SCRIPT', 'STYLE'].includes(node.parentElement.tagName)) return;
+			node.nodeValue = translateValue(node.nodeValue, language);
+		});
+		document.querySelectorAll('[aria-label], [alt]').forEach((element) => {
+			for (const attribute of ['aria-label', 'alt']) {
+				if (element.hasAttribute(attribute)) element.setAttribute(attribute, translateValue(element.getAttribute(attribute), language));
+			}
+		});
+		document.querySelectorAll('[data-language-toggle]').forEach((button) => {
+			button.setAttribute('aria-pressed', language === 'fr' ? 'true' : 'false');
+			button.setAttribute('aria-label', language === 'fr' ? 'Passer à l’anglais' : 'Passer au français');
+			const label = button.querySelector('[data-language-label]');
+			if (label) label.textContent = language === 'fr' ? 'EN' : 'FR';
+		});
+	};
+
+	const initialLanguage = localStorage.getItem('plombera-language') || 'en';
+	translatePage(initialLanguage);
+	document.querySelectorAll('[data-language-toggle]').forEach((button) => {
+		button.addEventListener('click', () => {
+			const language = document.documentElement.lang === 'fr' ? 'en' : 'fr';
+			localStorage.setItem('plombera-language', language);
+			translatePage(language);
+		});
+	});
+</script>
+
 <style>
 	html,
 	body {
