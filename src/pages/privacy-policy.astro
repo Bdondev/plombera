@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../sections/Header.astro';
 ---
 
 <Layout>
+	<Header />
 	<main class="privacy-page">
 		<div class="privacy-container">
-			<a class="back-link" href="/">← Back to home</a>
 			<p class="eyebrow">Legal</p>
 			<h1>Privacy Policy</h1>
 			<p class="last-updated">Last updated: October 19, 2026</p>
@@ -23,7 +24,7 @@ import Layout from '../layouts/Layout.astro';
 				<p>Links or phone actions may take you to services outside this website. Their privacy practices are governed by their own policies, so review those policies before sharing information.</p>
 
 				<h2>Your questions</h2>
-				<p>For questions about this policy or how your information is handled, call Plombera at <a href="tel:+12343454574">(234) 345-4574</a>.</p>
+				<p>For questions about this policy or how your information is handled, call Plombera at <a href="tel:+15145550123">(514) 555-0123</a>.</p>
 
 				<p class="policy-note">This page is a general website notice and should be reviewed and approved for the business’s actual privacy practices before production use.</p>
 			</div>
@@ -43,17 +44,6 @@ import Layout from '../layouts/Layout.astro';
 		margin-inline: auto;
 		padding-block: 150px 90px;
 	}
-
-	.back-link {
-		display: inline-block;
-		margin-bottom: 45px;
-		color: var(--color-plombera-blue-600);
-		font-size: 14px;
-		font-weight: 700;
-		text-decoration: none;
-	}
-
-	.back-link:hover { color: var(--color-plombera-navy-950); }
 
 	.eyebrow {
 		display: inline-flex;
@@ -95,7 +85,6 @@ import Layout from '../layouts/Layout.astro';
 
 	@media (max-width: 600px) {
 		.privacy-container { width: min(calc(100% - 2rem), 900px); padding-block: 120px 66px; }
-		.back-link { margin-bottom: 35px; }
 		.privacy-copy { margin-top: 36px; font-size: 15px; }
 	}
 </style>
