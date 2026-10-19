@@ -205,14 +205,13 @@ const hours = [
 	.footer-bottom a { color: var(--color-plombera-muted); text-decoration: none; }
 	.footer-bottom a:hover { color: var(--color-plombera-blue-600); }
 	.footer-wordmark {
-		overflow: hidden;
 		width: 100%;
-		margin: 34px 0 -0.08em;
+		margin: 34px 0 0;
 		color: var(--color-plombera-navy-950);
 		font-family: var(--font-display);
 		font-size: clamp(92px, 16.7vw, 220px);
 		font-weight: 900;
-		line-height: 0.78;
+		line-height: 0.84;
 		letter-spacing: -0.095em;
 		text-align: center;
 		white-space: nowrap;
@@ -232,6 +231,10 @@ const hours = [
 		.footer-grid { display: flex; flex-direction: column; gap: 35px; }
 		.footer-column h2 { margin-bottom: 17px; }
 		.footer-bottom { margin-top: 39px; min-height: 67px; }
-		.footer-wordmark { margin-top: 30px; font-size: 20vw; }
+		.footer-wordmark {
+			margin: 30px 0 10px;
+			font-size: min(15.5vw, 220px);
+			line-height: 0.9;
+		}
 	}
 </style>
