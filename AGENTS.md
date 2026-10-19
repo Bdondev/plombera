@@ -2,7 +2,7 @@
 
 ## Mission
 
-Build a pixel-accurate, accessible, performant, SEO/AEO-friendly static website matching the supplied mockup.
+Build a pixel-accurate, accessible, performant, SEO/AEO, GEO-friendly static website matching the supplied mockup.
 
 ## Stack
 
@@ -53,6 +53,7 @@ Build a pixel-accurate, accessible, performant, SEO/AEO-friendly static website 
 - Never suppress test failures.
 - Report checks that could not be performed.
 - Do not commit without approval.
+- Suggest git commit message in the format: "feat: add new section" or "fix: bug fix".
 
 ## Completion Report
 
