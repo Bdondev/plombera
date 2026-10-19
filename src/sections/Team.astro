@@ -1,0 +1,341 @@
+---
+import { Image } from 'astro:assets';
+import waterHeaterExpert from '../assets/water-heater-expert.png';
+import seniorPlumber from '../assets/Senior-plumber-technician.png';
+import leadPlumber from '../assets/lead-plomber.png';
+import apprenticePlumber from '../assets/apprentice-plomber.png';
+
+const teamMembers = [
+	{
+		name: 'Stephanie Nicol',
+		role: 'Water Heater Expert',
+		image: waterHeaterExpert,
+		alt: 'Stephanie Nicol wearing a hard hat and holding a toolbox',
+		featured: false,
+	},
+	{
+		name: 'Michael Brown',
+		role: 'Senior Plumbing Technician',
+		image: seniorPlumber,
+		alt: 'Michael Brown wearing plumbing overalls and holding tools',
+		featured: true,
+	},
+	{
+		name: 'Rodger Struck',
+		role: 'Lead Plumber',
+		image: leadPlumber,
+		alt: 'Rodger Struck wearing a gray plumber uniform',
+		featured: false,
+	},
+	{
+		name: 'Jason Reaves',
+		role: 'Emergency Plumber',
+		image: apprenticePlumber,
+		alt: 'Jason Reaves wearing a plumber uniform and holding wrenches',
+		featured: false,
+	},
+];
+
+const socialIcons = [
+	{ label: 'X', icon: 'x' },
+	{ label: 'LinkedIn', icon: 'linkedin' },
+	{ label: 'Facebook', icon: 'facebook' },
+	{ label: 'Instagram', icon: 'instagram' },
+];
+---
+
+<section id="team" class="team-section" aria-labelledby="team-title">
+	<div class="team-container">
+		<header class="team-header">
+			<div>
+				<p class="eyebrow">Meet Our Team</p>
+				<h2 id="team-title">Our Skilled Plumbers Teams</h2>
+			</div>
+
+			<div class="team-controls" aria-label="Team carousel controls">
+				<button class="carousel-button previous" type="button" data-carousel-previous aria-label="Show previous team members" disabled>
+					<span aria-hidden="true">‹</span>
+				</button>
+				<button class="carousel-button next" type="button" data-carousel-next aria-label="Show next team members">
+					<span aria-hidden="true">›</span>
+				</button>
+			</div>
+		</header>
+
+		<div class="team-viewport" data-carousel-viewport tabindex="0" aria-label="Our skilled plumbers">
+			<div class="team-track">
+				{teamMembers.map((member) => (
+					<article class:list={['team-card', { featured: member.featured }]} tabindex="0">
+						<div class="team-card-top">
+							<Image class="team-image" src={member.image} alt={member.alt} width={1122} height={1402} loading="lazy" />
+							<div class="social-links" aria-label={`${member.name} contact links`}>
+								{socialIcons.map((social) => (
+									<a href="/#contact" aria-label={`Contact Plombera about ${member.name}'s ${social.label} profile`}>
+										{social.icon === 'x' && <span aria-hidden="true" class="social-x">X</span>}
+										{social.icon === 'linkedin' && <span aria-hidden="true" class="social-linkedin">in</span>}
+										{social.icon === 'facebook' && <span aria-hidden="true" class="social-facebook">f</span>}
+										{social.icon === 'instagram' && (
+											<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<rect x="4" y="4" width="16" height="16" rx="4" />
+												<circle cx="12" cy="12" r="3.5" />
+												<circle cx="17.5" cy="6.5" r=".7" fill="currentColor" stroke="none" />
+											</svg>
+										)}
+									</a>
+								))}
+							</div>
+						</div>
+						<div class="team-card-copy">
+							<h3>{member.name}</h3>
+							<p>{member.role}</p>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const section = document.querySelector('[data-carousel-viewport]')?.closest('.team-section');
+	const viewport = section?.querySelector('[data-carousel-viewport]');
+	const previousButton = section?.querySelector('[data-carousel-previous]');
+	const nextButton = section?.querySelector('[data-carousel-next]');
+
+	if (viewport instanceof HTMLElement && previousButton instanceof HTMLButtonElement && nextButton instanceof HTMLButtonElement) {
+		const updateControls = () => {
+			const maxScroll = viewport.scrollWidth - viewport.clientWidth - 1;
+			previousButton.disabled = viewport.scrollLeft <= 1;
+			nextButton.disabled = viewport.scrollLeft >= maxScroll;
+		};
+
+		const scrollTrack = (direction: number) => {
+			const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			viewport.scrollBy({ left: direction * viewport.clientWidth * 0.8, behavior: reducedMotion ? 'auto' : 'smooth' });
+		};
+
+		previousButton.addEventListener('click', () => scrollTrack(-1));
+		nextButton.addEventListener('click', () => scrollTrack(1));
+		viewport.addEventListener('scroll', updateControls, { passive: true });
+		window.addEventListener('resize', updateControls);
+		updateControls();
+	}
+</script>
+
+<style>
+	.team-section {
+		background: white;
+		color: var(--color-plombera-navy-950);
+		overflow: hidden;
+	}
+
+	.team-container {
+		width: min(calc(100% - 2.5rem), 1170px);
+		margin-inline: auto;
+		padding-block: clamp(70px, 7vw, 105px) clamp(78px, 8vw, 112px);
+	}
+
+	.team-header {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 28px;
+		margin-bottom: 47px;
+	}
+
+	.eyebrow {
+		display: inline-flex;
+		width: fit-content;
+		margin: 0 0 18px;
+		padding: 6px 12px 5px;
+		border: 1px solid var(--color-plombera-navy-950);
+		border-radius: var(--radius-pill);
+		font-family: var(--font-display);
+		font-size: 13px;
+		font-weight: 700;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	.team-header h2 {
+		max-width: 680px;
+		margin: 0;
+		font-size: clamp(36px, 3.6vw, 52px);
+		line-height: 0.98;
+		letter-spacing: -0.04em;
+	}
+
+	.team-controls {
+		display: flex;
+		gap: 11px;
+		padding-bottom: 6px;
+	}
+
+	.carousel-button {
+		display: grid;
+		width: 48px;
+		height: 48px;
+		place-items: center;
+		border: 0;
+		border-radius: 50%;
+		background: #f3f4f7;
+		color: var(--color-plombera-navy-950);
+		cursor: pointer;
+		font-family: Arial, sans-serif;
+		font-size: 34px;
+		line-height: 1;
+	}
+
+	.carousel-button span {
+		display: block;
+		width: 9px;
+		height: 9px;
+		border-right: 2px solid currentColor;
+		border-bottom: 2px solid currentColor;
+		font-size: 0;
+	}
+
+	.carousel-button.previous span { transform: translateX(2px) rotate(135deg); }
+	.carousel-button.next span { transform: translateX(-2px) rotate(-45deg); }
+
+	.carousel-button.next { background: var(--color-plombera-yellow-400); }
+	.carousel-button:hover:not(:disabled) { background: var(--color-plombera-blue-600); color: white; }
+	.carousel-button.next:hover:not(:disabled) { background: var(--color-plombera-yellow-300); color: var(--color-plombera-navy-950); }
+	.carousel-button:disabled { cursor: not-allowed; opacity: 0.45; }
+	.carousel-button:focus-visible { outline: 3px solid var(--color-plombera-blue-600); outline-offset: 4px; }
+
+	.team-viewport {
+		margin-inline: -1px;
+		overflow-x: auto;
+		scroll-behavior: smooth;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+		touch-action: pan-x;
+		overscroll-behavior-x: contain;
+	}
+
+	.team-viewport::-webkit-scrollbar { display: none; }
+
+	.team-track {
+		display: flex;
+		gap: 23px;
+		width: max-content;
+		padding: 1px;
+	}
+
+	.team-card {
+		display: flex;
+		width: clamp(282px, 29.5vw, 330px);
+		min-height: 399px;
+		flex: 0 0 clamp(282px, 29.5vw, 330px);
+		flex-direction: column;
+		padding: 12px;
+		border: 1px solid #e5e7eb;
+		border-radius: 13px;
+		background: white;
+		box-shadow: 0 4px 12px rgb(16 43 99 / 3%);
+		scroll-snap-align: start;
+		transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+	}
+
+	.team-card:hover,
+	.team-card:focus,
+	.team-card:focus-within {
+		border-color: var(--color-plombera-blue-600);
+		background: var(--color-plombera-blue-600);
+		color: white;
+	}
+
+	.team-card:focus-visible { outline: 3px solid var(--color-plombera-yellow-400); outline-offset: 4px; }
+
+	.team-card-top {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 47px;
+		gap: 12px;
+	}
+
+	.team-image {
+		display: block;
+		width: 100%;
+		height: 303px;
+		border-radius: 10px;
+		background: #eef0f3;
+		object-fit: cover;
+		object-position: center top;
+	}
+
+	.social-links {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 11px;
+		padding: 10px 0;
+		border-radius: 22px;
+		background: #f2f3f6;
+		color: var(--color-plombera-navy-950);
+	}
+
+	.social-links a {
+		display: grid;
+		width: 26px;
+		height: 26px;
+		place-items: center;
+		border-radius: 50%;
+		color: currentColor;
+		font-family: Arial, sans-serif;
+		font-size: 13px;
+		font-weight: 800;
+		text-decoration: none;
+	}
+
+	.social-links a:hover,
+	.social-links a:focus-visible { background: var(--color-plombera-yellow-400); color: var(--color-plombera-navy-950); }
+	.social-links a:focus-visible { outline: 2px solid var(--color-plombera-blue-600); outline-offset: 2px; }
+	.social-linkedin { font-size: 13px; }
+	.social-facebook { font-family: Arial, sans-serif; font-size: 20px; line-height: 1; }
+	.social-links svg { width: 17px; height: 17px; }
+
+	.team-card.featured .social-links { background: white; color: var(--color-plombera-navy-950); }
+	.team-card.featured .social-links a:first-child,
+	.team-card.featured .social-links a:hover,
+	.team-card.featured .social-links a:focus-visible { background: var(--color-plombera-yellow-400); color: var(--color-plombera-navy-950); }
+
+	.team-card-copy { margin-top: 17px; padding-inline: 1px; }
+	.team-card-copy h3 {
+		margin: 0 0 6px;
+		font-size: 16px;
+		line-height: 1;
+		letter-spacing: -0.02em;
+	}
+	.team-card-copy p {
+		margin: 0;
+		color: var(--color-plombera-muted);
+		font-size: 14px;
+		line-height: 1.2;
+	}
+	.team-card:hover .team-card-copy p,
+	.team-card:focus .team-card-copy p,
+	.team-card:focus-within .team-card-copy p { color: rgb(255 255 255 / 80%); }
+
+	@media (max-width: 900px) {
+		.team-container { width: min(calc(100% - 2.5rem), 1170px); }
+		.team-header { margin-bottom: 36px; }
+		.team-card { width: 300px; flex-basis: 300px; }
+	}
+
+	@media (max-width: 600px) {
+		.team-container { width: min(calc(100% - 2rem), 1170px); padding-block: 62px 76px; }
+		.team-header { align-items: flex-start; flex-direction: column; gap: 22px; margin-bottom: 32px; }
+		.team-header h2 { max-width: 400px; font-size: clamp(34px, 10vw, 44px); }
+		.team-controls { align-self: flex-end; order: -1; padding-bottom: 0; }
+		.carousel-button { width: 44px; height: 44px; font-size: 31px; }
+		.team-track { gap: 16px; }
+		.team-card { width: min(82vw, 320px); flex-basis: min(82vw, 320px); }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.team-viewport { scroll-behavior: auto; }
+		.team-card { transition-duration: 0.01ms; }
+	}
+</style>
