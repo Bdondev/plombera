@@ -11,33 +11,28 @@ const isConfigured = typeof formUrl === 'string' && /^https:\/\//.test(formUrl);
 <div class="ghl-form">
 	{isConfigured ? (
 		<>
-			<div class="ghl-embed-shell" data-ghl-embed data-form-url={formUrl}>
-				<button class="ghl-load-button" type="button" data-ghl-load>
-					<span>Open the free quote form</span>
-				</button>
-				<p class="ghl-load-note">The secure form loads when you choose to open it.</p>
-				<noscript><a href={formUrl} target="_blank" rel="noopener">Open the free quote form</a></noscript>
-			</div>
-			<script is:inline>
-				document.querySelectorAll('[data-ghl-embed]').forEach((embed) => {
-					const button = embed.querySelector('[data-ghl-load]');
-					button?.addEventListener('click', () => {
-						const iframe = document.createElement('iframe');
-						iframe.src = embed.dataset.formUrl;
-						iframe.title = 'Plombera - Estimation Form';
-						iframe.loading = 'lazy';
-						iframe.className = 'ghl-iframe';
-						iframe.style.height = '621px';
-						iframe.setAttribute('data-cookie-consent', 'true');
-						button.replaceWith(iframe);
-						embed.querySelector('.ghl-load-note')?.remove();
-						const script = document.createElement('script');
-						script.src = 'https://link.msgsndr.com/js/form_embed.js';
-						script.async = true;
-						document.body.appendChild(script);
-					}, { once: true });
-				});
-			</script>
+			<iframe
+				src={formUrl}
+				style="width:100%;height:621px;border:none;border-radius:8px"
+				id="inline-P7SlR4VtUD0pZKobLsYD"
+				data-layout="{'id':'INLINE'}"
+				data-trigger-type="alwaysShow"
+				data-trigger-value=""
+				data-activation-type="alwaysActivated"
+				data-activation-value=""
+				data-deactivation-type="neverDeactivate"
+				data-deactivation-value=""
+				data-form-name="Plombera - Estimation Form"
+				data-height="621"
+				data-layout-iframe-id="inline-P7SlR4VtUD0pZKobLsYD"
+				data-form-id="P7SlR4VtUD0pZKobLsYD"
+				data-cookie-consent="true"
+				data-cookie-consent-provider="auto"
+				title="Plombera - Estimation Form"
+				loading="lazy"
+				class="ghl-iframe"
+			></iframe>
+			<script is:inline src="https://link.msgsndr.com/js/form_embed.js"></script>
 		</>
 	) : (
 		<div class="ghl-preview" data-ghl-preview>
@@ -83,12 +78,6 @@ const isConfigured = typeof formUrl === 'string' && /^https:\/\//.test(formUrl);
 
 <style>
 	.ghl-form { width: 100%; }
-	.ghl-embed-shell { min-height: 180px; display: grid; place-items: center; padding: 28px 20px; border: 1px solid var(--color-plombera-line); border-radius: 12px; background: #f8faff; text-align: center; }
-	.ghl-load-button { min-height: 48px; padding: 12px 22px; border: 0; border-radius: var(--radius-pill); background: var(--color-plombera-yellow-400); color: var(--color-plombera-navy-950); font: inherit; font-size: 13px; font-weight: 800; cursor: pointer; }
-	.ghl-load-button:focus-visible { outline: 3px solid var(--color-plombera-blue-600); outline-offset: 4px; }
-	.ghl-load-note { margin: 12px 0 0; color: var(--color-plombera-muted); font-size: 12px; }
-	.ghl-embed-shell noscript { display: block; margin-top: 12px; }
-	.ghl-embed-shell noscript a { color: var(--color-plombera-blue-600); font-weight: 700; }
 	/* Keep the official embed in the card flow while GHL initializes/resizes it. */
 	.ghl-iframe { position: relative !important; inset: auto !important; display: block; width: 100%; min-height: 621px; border: 0; }
 	.ghl-preview { padding: 16px; border: 1px dashed var(--color-plombera-blue-600); border-radius: 12px; background: #f8faff; }
