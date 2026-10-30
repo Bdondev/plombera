@@ -72,14 +72,14 @@ const isConfigured = typeof formUrl === 'string' && /^https:\/\//.test(formUrl);
 	)}
 
 	<p class="ghl-privacy-notice">
-		Your information is used to respond to your request. See our <a href="/privacy-policy">Privacy Policy</a>.
+		Demo form only — please use test information. No real quote requests will be submitted. See our <a href="/privacy-policy">Privacy Policy</a>.
 	</p>
 </div>
 
 <style>
-	.ghl-form { width: 100%; }
+	.ghl-form { width: 100%; background: white; }
 	/* Keep the official embed in the card flow while GHL initializes/resizes it. */
-	.ghl-iframe { position: relative !important; inset: auto !important; display: block; width: 100%; min-height: 621px; border: 0; }
+	.ghl-iframe { position: relative !important; inset: auto !important; display: block; width: 100%; min-height: 621px; border: 0; border-radius: 8px; background: white; }
 	.ghl-preview { padding: 16px; border: 1px dashed var(--color-plombera-blue-600); border-radius: 12px; background: #f8faff; }
 	.ghl-preview-label { margin: 0 0 7px; color: var(--color-plombera-blue-600); font-size: 10px; font-weight: 800; letter-spacing: 0.07em; line-height: 1.2; }
 	.ghl-preview-copy { margin: 0 0 14px; color: var(--color-plombera-muted); font-size: 12px; line-height: 1.35; }
